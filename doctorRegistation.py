@@ -179,6 +179,6 @@ def mainCode():
         in_val = values['_INPUT_']
         prediction_list = predict_text(str(in_val), outsp)
         combo_elem.Update(values=prediction_list)
-    print(values)  
+    # valid.velidation(values)
     doc.Close()
 
