@@ -3,4 +3,6 @@ There all the codes are present.
 
 Developed by 
 
-Nabila  Rashid :')
+|Shahan Ahmed|Nabila Rashid|
+|--|--|
+
