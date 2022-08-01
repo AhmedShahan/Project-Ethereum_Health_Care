@@ -122,15 +122,16 @@ def mainCode():
                 popup_auto_close("Added")
                 
         elif event=="remove":
-            rem=popup_get_text("Enter degree to remove")
+            rem=popup_get_text("Enter to remove")
             if rem==None:
                 continue
             elif rem not in outsp:
                 popup_auto_close("Degree is not in the list")
             else:
-                rem in outsp
+                q.removeSpecialist(rem)
                 outsp.remove(rem)
                 doc["_COMBO_"].update(outsp)
+                
          
         elif event=="addanother":
             DegreeArray=[
