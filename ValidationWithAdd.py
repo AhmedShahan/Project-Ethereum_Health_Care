@@ -1,7 +1,5 @@
 from msilib.schema import tables
 from PySimpleGUI import *
-from requests import NullHandler
-
 
 def create(add_another_degree,headings):
     add_another_degree_Layout=[
