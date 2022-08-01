@@ -109,6 +109,11 @@ def mainCode():
         values
         if event == WIN_CLOSED:
             break
+        
+########################################################################        
+## This is the section of Specialist
+########################################################################
+        #Adding Specialist in the list box
         elif event=="add1":
             add=popup_get_text("Enter :")
             if add==None:
@@ -120,7 +125,8 @@ def mainCode():
                 doc["_COMBO_"].update(outsp)
                 q.addSpecialist(add)
                 popup_auto_close("Added")
-                
+        
+        # Removing Specialist From the list box        
         elif event=="remove":
             rem=popup_get_text("Enter to remove")
             if rem==None:
@@ -132,7 +138,9 @@ def mainCode():
                 outsp.remove(rem)
                 doc["_COMBO_"].update(outsp)
                 
-         
+ ###################################################################################
+            # This section works multiple Medical College Degree Detaills
+ ###################################################################################        
         elif event=="addanother":
             DegreeArray=[
                 values["degreeCombo"],
@@ -143,26 +151,28 @@ def mainCode():
             addDegreeArray.append(DegreeArray)
             popup_auto_close("Added")
             valid.create(addDegreeArray,headings)
-        
+#######################################################################################
         elif event == "submit":
             for i in range(2000):
                 popup_animated("android.gif",no_titlebar=True,background_color="black",location=(600,100),time_between_frames=60)
             popup_animated(None)
             Popup("Successfully Created Your Profile",font=("Monotype Corsiva",20),title="Unauthorized")
             
-                
-        # #This is adding medical degree
-        # elif event== "add2":
-        #     addDegree=popup_get_text("Enter :")
-        #     if addDegree==None:
-        #         continue
-        #     elif addDegree in outdegree:
-        #         popup_auto_close("Already in the list")
-        #     else:
-        #         outdegree.append(addDegree)
-        #         doc['degreeCombo'].update(values=outdegree)
-        #         q.addDegree(addDegree)
-        #         popup_auto_close("Added")               
+##########################################################################################
+            # This is the section of Medical Degree Combo Box
+##########################################################################################       
+        #This is adding medical degree
+        elif event== "add2":
+            addDegree=popup_get_text("Enter :")
+            if addDegree==None:
+                continue
+            elif addDegree in outdegree:
+                popup_auto_close("Already in the list")
+            else:
+                outdegree.append(addDegree)
+                doc['degreeCombo'].update(values=outdegree)
+                q.addDegree(addDegree)
+                popup_auto_close("Added")              
 
 
         # autofill the SPecialist
@@ -171,9 +181,4 @@ def mainCode():
         combo_elem.Update(values=prediction_list)
     print(values)  
     doc.Close()
-
-# if q.ConnectORNOT():
-#     mainCode()
-# else:
-#     popup_auto_close("Database is Not Connected",background_color="#007ACC",font=("Monotype Corsiva",20))
 
