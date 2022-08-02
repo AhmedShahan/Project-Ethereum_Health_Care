@@ -20,13 +20,13 @@ def adminlog():
             [
             Text("\t"),
             Image('user.png'),
-            InputText("Please Enter Admin User",size=(30,1),justification="center",font=("Monotype Corsiva",15),key="user"),
+            InputText("shahan@202",size=(30,1),justification="center",font=("Monotype Corsiva",15),key="user"),
             ],
             [
             Text("\t"),
             Image('pass.png'),
             #Text("Password ",size=(10,1),font=("Monotype Corsiva",20)),
-            InputText(size=(30,1),password_char=("*"),justification="center",font=("Monotype Corsiva",15),default_text="ahmed1234",key="Password"),
+            InputText(size=(30,1),password_char=("*"),justification="center",font=("Monotype Corsiva",15),default_text="12345",key="Password"),
             ],     
             [
                 Text("\t\t\t\n\n\n\n\n"),
