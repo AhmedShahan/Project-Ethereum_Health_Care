@@ -17,18 +17,16 @@ def create(add_another_degree,headings):
               select_mode=TABLE_SELECT_MODE_BROWSE
               )]
     ]
-
     adding_degree=Window("Added Degree",add_another_degree_Layout,modal=True)
-    
     while True:
         event,value=adding_degree.read()
         if event== "Exit" or event== WIN_CLOSED:
             break
     adding_degree.Close()
     
-# def velidation(values):
-#   NULLVALUE=[]
-#   for i in values:
-#     if i==None or i==0:
-#       NULLVALUE.append(i)
-#   print(NULLVALUE)
+def velidation(values):
+  NULLVALUE=[]
+  for i in values:
+    if i==None or i==0:
+      NULLVALUE.append(i)
+  print(NULLVALUE)
