@@ -24,9 +24,9 @@ def create(add_another_degree,headings):
             break
     adding_degree.Close()
     
-def velidation(values):
-  NULLVALUE=[]
-  for i in values:
-    if i==None or i==0:
-      NULLVALUE.append(i)
-  print(NULLVALUE)
+# def velidation(values):
+#   NULLVALUE=[]
+#   for i in values:
+#     if i==None or i==0:
+#       NULLVALUE.append(i)
+#   print(NULLVALUE)
