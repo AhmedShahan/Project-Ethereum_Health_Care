@@ -175,7 +175,7 @@ def mainCode():
                 popup_auto_close("Added")              
 
 
-        # autofill the SPecialist
+        # Auto Search the Specialist Lest
         in_val = values['_INPUT_']
         prediction_list = predict_text(str(in_val), outsp)
         combo_elem.Update(values=prediction_list)
