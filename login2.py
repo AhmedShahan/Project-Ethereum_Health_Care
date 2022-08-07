@@ -7,7 +7,7 @@ def adminlog():
     theme("Black")
     theme_input_background_color("white")
     theme_input_text_color("Black")
-    login="login.png"    
+    login="static/images/login.png"    
     layout=[
         
         [
@@ -15,18 +15,18 @@ def adminlog():
         ],
             [
             Text("\t"),
-            Image('admin.png',size=(360,192)),
+            Image('static/images/admin.png',size=(360,192)),
             ],
             [
             Text("\t"),
-            Image('user.png'),
-            InputText("shahan@202",size=(30,1),justification="center",font=("Monotype Corsiva",15),key="user"),
+            Image('static/images/user.png'),
+            InputText("Please Enter Admin User",size=(30,1),justification="center",font=("Monotype Corsiva",15),key="user"),
             ],
             [
             Text("\t"),
-            Image('pass.png'),
+            Image('static/images/pass.png'),
             #Text("Password ",size=(10,1),font=("Monotype Corsiva",20)),
-            InputText(size=(30,1),password_char=("*"),justification="center",font=("Monotype Corsiva",15),default_text="12345",key="Password"),
+            InputText(size=(30,1),password_char=("*"),justification="center",font=("Monotype Corsiva",15),default_text="ahmed1234",key="Password"),
             ],     
             [
                 Text("\t\t\t\n\n\n\n\n"),
@@ -50,7 +50,7 @@ def adminlog():
             res=adminq(value)
             if res:
                 for i in range(1500):
-                    popup_animated("my1.gif",no_titlebar=True,background_color="black",location=(570,250),time_between_frames=25)
+                    popup_animated("static/images/my1.gif",no_titlebar=True,background_color="black",location=(570,250),time_between_frames=25)
                 popup_animated(None)
                 Popup("Welcome\nYou ar successfylly logedin",font=("Monotype Corsiva",20),title="Authorized")
                 login.close()
@@ -58,7 +58,7 @@ def adminlog():
                 
             else:
                 for i in range(1500):
-                    popup_animated("my1.gif",no_titlebar=True,background_color="black",location=(570,250),time_between_frames=25)
+                    popup_animated("static/images/my1.gif",no_titlebar=True,background_color="black",location=(570,250),time_between_frames=25)
                 popup_animated(None)
                 Popup("SORRY\nYou NOT an Authorized Person.",font=("Monotype Corsiva",20),title="Unauthorized")
 

@@ -12,7 +12,7 @@ def mainCode():
     theme_input_background_color("white")
     theme_input_text_color("#001D3C")
     colpersonal=[
-        [Text("Name",size=(15,1),font=("Times & new roman","12","italic","bold")),InputText("Enter Name Here",font=("times & new roman",12,"italic"),size=(30,1),justification="center")],
+        [Text("Name",size=(15,1),font=("Times & new roman","12","italic","bold")),InputText(font=("times & new roman",12,"italic"),size=(30,1),justification="center",key="name")],
         [Text("Date of Birth",size=(15,1),font=("Times & new roman","12","italic","bold")),
         CalendarButton("Date of Birth",target="depart",format="%d-%m-%Y",size=(14,1)),
         Input(key="depart",size=(20,1),default_text="01-03-2022"),
@@ -73,12 +73,12 @@ def mainCode():
         ],
         [
             Text("\t"*2),
-            ReadFormButton('', button_color="#044343",image_filename="submit.png", image_size=(150, 50), image_subsample=2, border_width=0,key="submit"),
+            ReadFormButton('', button_color="#044343",image_filename="static/images/submit.png", image_size=(150, 50), image_subsample=2, border_width=0,key="submit"),
             
         ]
     ]
     col1=[
-        [Image("doc22.png")],
+        [Image("static/images/doc22.png")],
     ]
     col2=[
         [
@@ -95,7 +95,7 @@ def mainCode():
     
     
     layout=[
-        [Image("eth444.png",size=(480,120)),Text("Fill Up the Doctor Details",font=("Jokerman",40,"underline"),size=(20,1),justification="c")],
+        [Image("static/images/eth444.png",size=(480,120)),Text("Fill Up the Doctor Details",font=("Jokerman",40,"underline"),size=(20,1),justification="c")],
         [Column(col2,element_justification="c"),Column(col1,element_justification="l")],
     ]
 
@@ -109,11 +109,6 @@ def mainCode():
         values
         if event == WIN_CLOSED:
             break
-        
-########################################################################        
-## This is the section of Specialist
-########################################################################
-        #Adding Specialist in the list box
         elif event=="add1":
             add=popup_get_text("Enter :")
             if add==None:
@@ -125,22 +120,18 @@ def mainCode():
                 doc["_COMBO_"].update(outsp)
                 q.addSpecialist(add)
                 popup_auto_close("Added")
-        
-        # Removing Specialist From the list box        
+                
         elif event=="remove":
-            rem=popup_get_text("Enter to remove")
+            rem=popup_get_text("Enter degree to remove")
             if rem==None:
                 continue
             elif rem not in outsp:
                 popup_auto_close("Degree is not in the list")
             else:
-                q.removeSpecialist(rem)
+                rem in outsp
                 outsp.remove(rem)
                 doc["_COMBO_"].update(outsp)
-                
- ###################################################################################
-            # This section works multiple Medical College Degree Detaills
- ###################################################################################        
+         
         elif event=="addanother":
             DegreeArray=[
                 values["degreeCombo"],
@@ -151,16 +142,20 @@ def mainCode():
             addDegreeArray.append(DegreeArray)
             popup_auto_close("Added")
             valid.create(addDegreeArray,headings)
-#######################################################################################
+        
         elif event == "submit":
-            for i in range(2000):
-                popup_animated("android.gif",no_titlebar=True,background_color="black",location=(600,100),time_between_frames=60)
-            popup_animated(None)
-            Popup("Successfully Created Your Profile",font=("Monotype Corsiva",20),title="Unauthorized")
-            
-##########################################################################################
-            # This is the section of Medical Degree Combo Box
-##########################################################################################       
+            result= valid.checkValidation(values)
+            if result[0]:
+                for i in range(2000):
+                    popup_animated("static/images/my1.gif",no_titlebar=True,background_color="black",location=(600,100),time_between_frames=60)
+                popup_animated(None)
+                Popup("Successfully Created Your Profile",font=("Monotype Corsiva",20),title="Unauthorized")
+            else:
+                for i in range(1500):
+                    popup_animated("static/images/my1.gif",no_titlebar=True,background_color="black",location=(600,100),time_between_frames=25)
+                popup_animated(None)
+                pop=result[1]
+                popup_ok(pop,background_color="black",font=("Times & New Roman",15,"italic"))
         #This is adding medical degree
         elif event== "add2":
             addDegree=popup_get_text("Enter :")
@@ -172,13 +167,17 @@ def mainCode():
                 outdegree.append(addDegree)
                 doc['degreeCombo'].update(values=outdegree)
                 q.addDegree(addDegree)
-                popup_auto_close("Added")              
+                popup_auto_close("Added")               
 
 
-        # Auto Search the Specialist Lest
+        # autofill the SPecialist
         in_val = values['_INPUT_']
         prediction_list = predict_text(str(in_val), outsp)
         combo_elem.Update(values=prediction_list)
-    # valid.velidation(values)
     doc.Close()
+
+# if q.ConnectORNOT():
+#     mainCode()
+# else:
+#     popup_auto_close("Database is Not Connected",background_color="#007ACC",font=("Monotype Corsiva",20))
 

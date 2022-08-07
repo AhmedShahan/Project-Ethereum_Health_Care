@@ -1,6 +1,6 @@
 from PySimpleGUI import *
 import administration1 as ad1
-import doctorRegistation as docreg
+import doctorRegistation as doctorreg
 
 
 def adminis():
@@ -29,18 +29,18 @@ def adminis():
         ],
     ]
 
-    col1=[[Image("admin22.png")]]
+    col1=[[Image("static/images/admin22.png")]]
     col2=[
         [Frame("Doctor Section",frame1,font=("Monotype Corsiva",15),title_color="yellow")],
         [Frame("Patient Section",frame2,font=("Monotype Corsiva",15),title_color="yellow")],
         [Frame("Notice Section",frame3,font=("Monotype Corsiva",15),title_color="yellow")],
         [Frame("Other Section",frame4,font=("Monotype Corsiva",15),title_color="yellow")],
         [Text("")],
-        [ReadFormButton('', button_color="#044343",image_filename="back2.png", image_size=(150, 50), image_subsample=2, border_width=0,key="back"),]
+        [ReadFormButton('', button_color="#044343",image_filename="static/images/back2.png", image_size=(150, 50), image_subsample=2, border_width=0,key="back"),]
         
     ]
     layout=[
-        [Text("\t\t\t"),Image("eth3.png")],
+        [Text("\t\t\t"),Image("static/images/eth3.png")],
         [Text("***************************************************************"*10)],
         [Column(col1,element_justification="c"),Column(col2,element_justification="c")],
 
@@ -58,7 +58,6 @@ def adminis():
             if pop=="OK":
                 doc.close()
                 ad1.proctorview()
-        elif event=="regdoc":
-            doc.Close()
-            docreg.mainCode()
-            
+        elif event== "regdoc":
+            doc.close()
+            doctorreg.mainCode()
