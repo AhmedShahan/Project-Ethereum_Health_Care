@@ -12,18 +12,18 @@ def mainCode():
     theme_input_background_color("white")
     theme_input_text_color("#001D3C")
     colpersonal=[
-        [Text("Name", size=(15,1),font=("Times & new roman","12","italic","bold")),InputText(key='name',font=("times & new roman",12,"italic"),size=(30,1),justification="center")],
+        [Text("Name", size=(15,1),font=("Times & new roman","12","italic","bold")),InputText(key='Name',font=("times & new roman",12,"italic"),size=(30,1),justification="center")],
         [Text("Date of Birth",size=(15,1),font=("Times & new roman","12","italic","bold")),
-        CalendarButton("Date of Birth",target="depart",format="%d-%m-%Y",size=(14,1)),
-        Input(key="depart",size=(20,1)),
+        CalendarButton("Date of Birth",target="DateOfBirth",format="%d-%m-%Y",size=(14,1)),
+        Input(key="DateOfBirth",size=(20,1)),
         ],
         [Text("Gender",size=(15,1),font=("Times & new roman","12","italic","bold")),Radio("Male","g-1",default=True, font=("Times & new roman","12","italic")),Radio("Female","g-1",font=("Times & new roman","12","italic"))],
-        [Text("NID Number",size=(15,1),font=("Times & new roman","12","italic","bold")),InputText(font=("times & new roman",12,"italic"),size=(30,1),justification="center")],
-        [Text("Passport Number",size=(15,1),font=("Times & new roman","12","italic","bold")),InputText(font=("times & new roman",12,"italic"),size=(30,1),justification="center")],
-        [Text("Mobile Number",size=(15,1),font=("Times & new roman","12","italic","bold")),InputText(font=("times & new roman",12,"italic"),size=(30,1),justification="center")],
-        [Text("Email Address",size=(15,1),font=("Times & new roman","12","italic","bold")),InputText(font=("times & new roman",12,"italic"),size=(30,1),justification="center")],
-        [Text("Present Address",size=(15,1),font=("Times & new roman","12","italic","bold")),Multiline(font=("times & new roman",12,"italic"),size=(30,3),justification="center")],
-        [Text("Parmanent Address",size=(15,1),font=("Times & new roman","12","italic","bold")),Multiline(font=("times & new roman",12,"italic"),size=(30,3),justification="center")],
+        [Text("NID Number",size=(15,1),font=("Times & new roman","12","italic","bold")),InputText(font=("times & new roman",12,"italic"),size=(30,1),justification="center",key="NID")],
+        [Text("Passport Number",size=(15,1),font=("Times & new roman","12","italic","bold")),InputText(font=("times & new roman",12,"italic"),size=(30,1),justification="center",key="Passport Number")],
+        [Text("Mobile Number",size=(15,1),font=("Times & new roman","12","italic","bold")),InputText(font=("times & new roman",12,"italic"),size=(30,1),justification="center",key="Mobile Number")],
+        [Text("Email Address",size=(15,1),font=("Times & new roman","12","italic","bold")),InputText(font=("times & new roman",12,"italic"),size=(30,1),justification="center",key="Email Address")],
+        [Text("Present Address",size=(15,1),font=("Times & new roman","12","italic","bold")),Multiline(font=("times & new roman",12,"italic"),size=(30,3),justification="center",key="Present Address")],
+        [Text("Parmanent Address",size=(15,1),font=("Times & new roman","12","italic","bold")),Multiline(font=("times & new roman",12,"italic"),size=(30,3),justification="center",key="Parmanent Address")],
         
         
         [Text('Blood Group', font=('Monotype Corsiva', 15), justification='left')], 
