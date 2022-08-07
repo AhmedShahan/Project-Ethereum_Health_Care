@@ -7,9 +7,9 @@ def patientwindow():
     theme("PythonPlus")
     theme_input_background_color("white")
     theme_input_text_color("Black")
-    signup="signup.png"
-    signin="signin.png"
-    back="back.gif"
+    signup="static/images/signup.png"
+    signin="static/images/signin.png"
+    back="static/images/back.gif"
 
     frame=[
         [
@@ -20,9 +20,9 @@ def patientwindow():
     ]
 
     layout=[
-        [Text("\t"),Image("eth3.png")],
+        [Text("\t"),Image("static/images/eth3.png")],
         [Text("***************************************************************"*10)],
-        [Image("patient.png"),
+        [Image("static/images/patient.png"),
         Frame("Sign as Patient",frame,font=("Jokerman",30),title_color="yellow")
         
         ], 

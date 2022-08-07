@@ -5,8 +5,8 @@ import query as q
 
 
 def mainCode():
-    close = './close.png'
-    next = './next.png'
+    close = 'static/images/close.png'
+    next = 'static/images/next.png'
     pg.theme("PythonPlus")
     pg.theme_background_color("#053e40")
     pg.theme_element_background_color("#053e40")
@@ -14,14 +14,14 @@ def mainCode():
 
     frame=[    
         [
-            pg.Image('shaan3.png'),
+            pg.Image('static/images/shaan3.png'),
             pg.Text("Shahan Ahmed\nDepartment of Electrical & Computer Engineer.\nMajor Computer Science & Enineering\nEmail:shahan.ahmed@northsouth.edu\n",
                     size=(50,4),justification="left",font=("monotype Corsiva",15),background_color="#053e40"),
         ], 
         [pg.Text("=====================================================================",background_color="black")],
         [
             
-            pg.Image('nabila.png'),
+            pg.Image('static/images/nabila.png'),
             pg.Text("Nabila Rashid\nDepartment of Electrical & Computer Engineer.\nMajor Computer Science & Enineering\nEmail:nabila.rashid@northsouth.edu",
                     size=(50,4),justification="left",font=("monotype Corsiva",15),background_color="#053e40"),
         ],  
@@ -29,7 +29,7 @@ def mainCode():
     layout=[
         
         [
-            pg.Image('eth.png',size=(700,140)),
+            pg.Image('static/images/eth.png',size=(700,140)),
         ],
         [pg.Text("\n\n\n\n",background_color="#053e40")],
         [

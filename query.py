@@ -19,10 +19,6 @@ if ConnectORNOT():
                                             user='root',
                                             password='')
     mycourser=mydb.cursor()
-    
-    
-    
-    ### Admin Password & Username Query
     def adminq(value):
         username=value["user"]
         Pass=value["Password"]
@@ -33,7 +29,7 @@ if ConnectORNOT():
         else:
             return True
         
-    ## Doctor Login page username & password query
+        
     def doctorq(value):
         docuser=value["docuser"]
         docpass=value["docpass"]
@@ -44,8 +40,7 @@ if ConnectORNOT():
         else:
             return True
         
-    
-    ## Administration login username & Password Query
+        
     def Administration(value):
         procuser=value["procuser"]
         procpass=value["procpass"]
@@ -55,25 +50,18 @@ if ConnectORNOT():
             return False
         else:
             return True
-        
-    
-    #In the Doctor Registration, Adding Specialist in the list
+ #This section for Specialist
     def addSpecialist(getSpecialist):
         mycourser.execute("INSERT INTO specialist (SpList) VALUES (%s)",(getSpecialist,))
-        mydb.commit()
-    
-    #In the Doctor Registration, retriving Specialist
+        mycourser.commit()
+        
     def retriveSpecialist():
         mycourser.execute("SELECT SpList FROM specialist")
         result=mycourser.fetchall()
         return result
     
-    # From the Doctor Registration, Remove value from Specialist List
-    def removeSpecialist(special):
-        mycourser.execute("DELETE FROM specialist WHERE SpList=%s",(special,))
-        mydb.commit()
     
-
+    # This section for medical History
     def retriveDegree():
         mycourser.execute("SELECT degreeList FROM medicaldegree")
         result=mycourser.fetchall()
@@ -81,5 +69,4 @@ if ConnectORNOT():
     
     def addDegree(getDegree):        
         mycourser.execute("INSERT INTO medicaldegree (degreeList) VALUES (%s)",(getDegree,))
-        mydb.commit()
-    
+        mycourser.commit()

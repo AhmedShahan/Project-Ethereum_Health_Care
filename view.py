@@ -41,7 +41,7 @@ def view():
         [Text("\t"),Frame("Select Your Module",frame,font=("Monotype Corsiva",20))],
         [
             Text("\t\t       "),
-            ReadFormButton('', button_color="#001d3c",image_filename="logout.png", image_size=(120, 50), image_subsample=2, border_width=0,key="logout"),
+            ReadFormButton('', button_color="#001d3c",image_filename="static/images/logout.png", image_size=(120, 50), image_subsample=2, border_width=0,key="logout"),
         ]
     ]
 

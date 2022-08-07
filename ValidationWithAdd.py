@@ -1,6 +1,7 @@
 from msilib.schema import tables
 from PySimpleGUI import *
 
+
 def create(add_another_degree,headings):
     add_another_degree_Layout=[
         [Table(values=add_another_degree,headings=headings, max_col_width=35,
@@ -17,16 +18,32 @@ def create(add_another_degree,headings):
               select_mode=TABLE_SELECT_MODE_BROWSE
               )]
     ]
+
     adding_degree=Window("Added Degree",add_another_degree_Layout,modal=True)
+    
     while True:
         event,value=adding_degree.read()
         if event== "Exit" or event== WIN_CLOSED:
             break
     adding_degree.Close()
     
-# def velidation(values):
-#   NULLVALUE=[]
-#   for i in values:
-#     if i==None or i==0:
-#       NULLVALUE.append(i)
-#   print(NULLVALUE)
+#################################################
+      # Form Validation
+
+def checkValidation(Allvalues):
+    formValue="Please Fillup This"
+    isValied=True
+    if len(Allvalues["name"])==0:
+        formValue=formValue + "\n"+ "Name"
+        isValied= False
+    # if len(Allvalues["dob"])==0:
+    #     formValue=formValue + "\n"+ "Date Of Birth"
+    #     isValied= False
+    # if len(Allvalues["passport"])==0:
+    #     formValue=formValue + "\n"+ "Passport Number"
+    #     isValied= False
+    # if len(Allvalues["phone"])==0:
+    #     formValue=formValue + "\n"+ "Mobile Number"
+    #     isValied= False
+    result=[isValied,formValue]
+    return result

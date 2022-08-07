@@ -9,8 +9,8 @@ def doctor():
     theme_input_background_color("white")
     theme_input_text_color("Black")
 
-    login="login.png"
-    back="back.gif"
+    login="static/images/login.png"
+    back="static/images/back.gif"
     frame=[
         [
         Text("Dr User ID",size=(10,1),font=("Monotype Corsiva",20)),
@@ -30,10 +30,10 @@ def doctor():
         ]
     ]
     layout=[
-        [Text("\t    "),Image("eth2.png")],
+        [Text("\t    "),Image("static/images/eth2.png")],
         [
             Frame("Sign in as a Doctor",frame,font=("Monotype Corsiva",20,"bold"),title_color="Yellow"),
-            Image("docor.png",size=(200,500)),
+            Image("static/images/docor.png",size=(200,500)),
         ],   
         ]
 
@@ -50,13 +50,13 @@ def doctor():
             res=doctorq(value)
             if res:
                 for i in range(1500):
-                    popup_animated("my.gif",no_titlebar=True,background_color="black",location=(630,200),time_between_frames=30)
+                    popup_animated("static/images/my.gif",no_titlebar=True,background_color="black",location=(630,200),time_between_frames=30)
                 popup_animated(None)
                 Popup("Welcome\nYou ar successfylly logedin",font=("Monotype Corsiva",20),title="Authorized")            
                 
             else:
                 for i in range(1500):
-                    popup_animated("my.gif",no_titlebar=True,background_color="black",location=(630,200),time_between_frames=30)
+                    popup_animated("static/images/my.gif",no_titlebar=True,background_color="black",location=(630,200),time_between_frames=30)
                 popup_animated(None)
                 Popup("SORRY\nYou NOT an Authorized Person.",font=("Monotype Corsiva",20),title="Unauthorized")
 
