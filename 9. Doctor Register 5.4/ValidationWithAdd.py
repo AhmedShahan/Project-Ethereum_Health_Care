@@ -38,9 +38,12 @@ def checkValidationDoctor(Allvalues):
     for key, value in Allvalues.items():
         if isinstance(value, str) or isinstance(value, list):
             if len(value)==0:
-                formValue=formValue + "\n"+ str(key)
-                isValied= False
-    
+                if len(Allvalues["Date of Birth"]==0):
+                    continue
+                else:
+                    formValue=formValue + "\n"+ str(key)
+                    isValied= False
+                
     # if len(Allvalues[1])==0:
     #     formValue=formValue + "\n"+ "Name"
     #     isValied= False
