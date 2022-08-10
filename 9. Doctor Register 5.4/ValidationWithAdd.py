@@ -31,7 +31,7 @@ def create(add_another_degree,headings):
 #################################################
       # Form Validation
 
-def checkValidationDoctor(Allvalues,event):
+def checkValidationDoctor(Allvalues):
     formValue="\tPlease Fillup This\n======================="
     isValied=True
     

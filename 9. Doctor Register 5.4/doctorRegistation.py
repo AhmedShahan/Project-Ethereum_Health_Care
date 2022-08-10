@@ -73,13 +73,13 @@ def mainCode():
         ],
         [
             Text("\t"*2),
-            ReadFormButton('', button_color="#044343",image_filename="back2.png", image_size=(150, 50), image_subsample=2, border_width=0,key="back"),
-            ReadFormButton('', button_color="#044343",image_filename="submit.png", image_size=(150, 50), image_subsample=2, border_width=0,key="submit"),
+            ReadFormButton('', button_color="#044343",image_filename="images/back2.png", image_size=(150, 50), image_subsample=2, border_width=0,key="back"),
+            ReadFormButton('', button_color="#044343",image_filename="images/submit.png", image_size=(150, 50), image_subsample=2, border_width=0,key="submit"),
             
         ]
     ]
     col1=[
-        [Image("doc22.png")],
+        [Image("images/doc22.png")],
     ]
     col2=[
         [
@@ -96,7 +96,7 @@ def mainCode():
     
     
     layout=[
-        [Image("eth444.png",size=(480,120)),Text("Fill Up the Doctor Details",font=("Jokerman",40,"underline"),size=(20,1),justification="c")],
+        [Image("images/eth444.png",size=(480,120)),Text("Fill Up the Doctor Details",font=("Jokerman",40,"underline"),size=(20,1),justification="c")],
         [Column(col2,element_justification="c"),Column(col1,element_justification="l")],
     ]
 
@@ -148,17 +148,15 @@ def mainCode():
             result= valid.checkValidationDoctor(values)
             if result[0]:
                 for i in range(1000):
-                    popup_animated("my1.gif",no_titlebar=True,background_color="black",location=(600,100),time_between_frames=60)
+                    popup_animated("images/my1.gif",no_titlebar=True,background_color="black",location=(600,100),time_between_frames=60)
                 popup_animated(None)
                 Popup("Successfully Created Your Profile",font=("Monotype Corsiva",20),title="Unauthorized")
-                print(values)
             else:
                 for i in range(1000):
-                    popup_animated("my1.gif",no_titlebar=True,background_color="black",location=(600,100),time_between_frames=25)
+                    popup_animated("images/my1.gif",no_titlebar=True,background_color="black",location=(600,100),time_between_frames=25)
                 popup_animated(None)
                 pop=result[1]
                 popup_ok(pop,background_color="black",font=("Times & New Roman",15,"italic"))
-                print(values)
         #This is adding medical degree
         elif event== "add2":
             addDegree=popup_get_text("Enter :")
