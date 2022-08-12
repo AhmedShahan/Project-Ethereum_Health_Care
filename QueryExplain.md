@@ -85,4 +85,38 @@ create table patientInfo
  );
  ```
 
+## Table of doctor Info
+```sql
+create table DoctorInfo                  
+(  BMDCReg varchar(30) PRIMARY KEY, 
+   Name varchar(20),
+   DeathOfBirth varchar(20),
+   Gender varchar(20),
+   NID varchar(20),
+   Passport varchar(20),
+   MobileNo int(20),
+   Email varchar(20),
+   PresentAddress varchar(30),
+   PermanentAddress varchar(30),
+   BloodGroup Varchar (30)
+ );
 
+``` 
+
+## Table of Health Details
+```sql
+Create table HealthDetails
+( Disease varchar(30),
+  DiseaseId varchar(30) PRIMARY KEY AUTO_INCREMENT
+ );
+ ```
+
+ ## Table of Paitent Log
+ ```sql
+ 
+Create table PatientLog
+( PatientUser varchar(30),
+  PatientId varchar(30) PRIMARY KEY AUTO_INCREMENT
+ );
+
+ ```
