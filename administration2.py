@@ -1,6 +1,6 @@
 from PySimpleGUI import *
 import administration1 as ad1
-import doctorRegistation as doctorreg
+# import doctorRegistation as doctorreg
 
 
 def adminis():
@@ -58,6 +58,6 @@ def adminis():
             if pop=="OK":
                 doc.close()
                 ad1.proctorview()
-        elif event== "regdoc":
-            doc.close()
-            doctorreg.mainCode()
+        # elif event== "regdoc":
+        #     doc.close()
+        #     doctorreg.mainCode()
