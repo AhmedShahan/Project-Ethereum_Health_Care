@@ -68,5 +68,21 @@ CHANGE old_filed_Name New_Field_Name datatype;
 ````
 
 
+## Table of Patient Info
+```sql
+create table patientInfo
+( ID varchar(30) PRIMARY KEY, 
+   Name varchar(20),
+   DeathOfBirth varchar(20),
+   Gender varchar(20),
+   Age varchar (20),
+   NID varchar(20),
+   MobileNo int(20),
+   Email varchar(20),
+   PresentAddress varchar(30),
+   PermanentAddress varchar(30),
+   BloodGroup Varchar (30)
+ );
+ ```
 
 
