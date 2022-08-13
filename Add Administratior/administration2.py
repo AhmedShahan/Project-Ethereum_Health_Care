@@ -26,18 +26,18 @@ def adminis():
     frame3=[
         [Button("Test & Images",size=(15,1),font=("Times & New Roman",15,"italic"),key="test"),
         Button("Answer FAQ",size=(15,1),font=("Times & New Roman",15,"italic"),key="faq"),
-        Button("Register Administration",size=(20,1),font=("Times & New Roman",15,"italic"),key="faq"),
+        Button("Register Administration",size=(20,1),font=("Times & New Roman",15,"italic"),key="regAdmin"),
         ],
     ]
 
-    col1=[[Image("imageadmin22.png")]]
+    col1=[[Image("image/admin22.png")]]
     col2=[
         [Frame("Doctor Section",frame1,font=("Monotype Corsiva",15),title_color="yellow")],
         [Frame("Patient Section",frame2,font=("Monotype Corsiva",15),title_color="yellow")],
         [Frame("Notice Section",frame3,font=("Monotype Corsiva",15),title_color="yellow")],
         [Frame("Other Section",frame4,font=("Monotype Corsiva",15),title_color="yellow")],
         [Text("")],
-        [ReadFormButton('', button_color="#044343",image_filename="static/images/back2.png", image_size=(150, 50), image_subsample=2, border_width=0,key="back"),]
+        [ReadFormButton('', button_color="#044343",image_filename="image/back2.png", image_size=(150, 50), image_subsample=2, border_width=0,key="back"),]
         
     ]
     layout=[
@@ -49,7 +49,8 @@ def adminis():
 
     doc=Window("Doctor Login",layout,size=(1000,600),location=(300,100))
 
-
+    alltheAdministrator=q.retirveAdminis()
+    administrator=list(itertools.chain(*alltheAdministrator))
     while True:
         event,value=doc.read()
         if event==WIN_CLOSED:
@@ -62,6 +63,22 @@ def adminis():
         # elif event== "regdoc":
         #     doc.close()
         #     doctorreg.mainCode()
+        
+        elif event=="regAdmin":
+            newUser= popup_get_text("Enter new Administartor UserID:")
+            if newUser==None:
+                continue
+            elif newUser in administrator:
+                popup("Already in the Administration list")
+                continue
+            else:
+                newpass= popup_get_text("Enter new Administartor Password:")
+                if newpass==None:
+                    continue
+                else:
+                    q.AddAdministrator(newUser,newpass)
+                    popup("New Administrator is added")
+                
 if q.ConnectORNOT():
     adminis()
 else:

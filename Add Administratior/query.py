@@ -46,5 +46,15 @@ if ConnectORNOT():
     def removeSpecialist(specialist):
         mycourser.execute("DELETE FROM specialist WHERE SpList=%s",(specialist,))
         connection.commit()
-# if __name__ == "__main__":
-#     main()
+      
+      
+    def retirveAdminis():
+        mycourser.execute("SELECT administrationID FROM administrationlog")
+        result=mycourser.fetchall()
+        return result
+
+    def AddAdministrator(NewAdmin,password):
+        mycourser.execute("INSERT INTO administrationlog VALUES (%s,%s)",(NewAdmin,password))
+        connection.commit()
+        
+        
