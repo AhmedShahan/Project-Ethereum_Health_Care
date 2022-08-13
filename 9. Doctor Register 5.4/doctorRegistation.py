@@ -5,7 +5,15 @@ import ValidationWithAdd as valid
 def predict_text(input, lista):
     pattern = re.compile('.*' + input + '.*')
     return [w for w in lista if re.match(pattern, w)]
-   
+
+## All the images
+backimg="image/back2.png"
+docimg="image/doc.png"
+doc22img="image/doc22.png"
+ethimg="image/eth444.png"
+mygif="image/my1.gif"
+submitimg="image/submit.png"
+ 
 def mainCode():
     theme("DarkGreen4")
     theme_button_color("black")
@@ -73,13 +81,13 @@ def mainCode():
         ],
         [
             Text("\t"*2),
-            ReadFormButton('', button_color="#044343",image_filename="back2.png", image_size=(150, 50), image_subsample=2, border_width=0,key="back"),
-            ReadFormButton('', button_color="#044343",image_filename="submit.png", image_size=(150, 50), image_subsample=2, border_width=0,key="submit"),
+            ReadFormButton('', button_color="#044343",image_filename=backimg, image_size=(150, 50), image_subsample=2, border_width=0,key="back"),
+            ReadFormButton('', button_color="#044343",image_filename=submitimg, image_size=(150, 50), image_subsample=2, border_width=0,key="submit"),
             
         ]
     ]
     col1=[
-        [Image("doc22.png")],
+        [Image(doc22img)],
     ]
     col2=[
         [
@@ -96,7 +104,7 @@ def mainCode():
     
     
     layout=[
-        [Image("eth444.png",size=(480,120)),Text("Fill Up the Doctor Details",font=("Jokerman",40,"underline"),size=(20,1),justification="c")],
+        [Image(ethimg,size=(480,120)),Text("Fill Up the Doctor Details",font=("Jokerman",40,"underline"),size=(20,1),justification="c")],
         [Column(col2,element_justification="c"),Column(col1,element_justification="l")],
     ]
 
