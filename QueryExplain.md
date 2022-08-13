@@ -121,6 +121,7 @@ Create table PatientLog
 
  ```
 ## PatientHealth Table 
+```sql
  CREATE TABLE PatientHealth(
     DiseasID int(3),
     PatientID int(3),
@@ -128,3 +129,4 @@ Create table PatientLog
     FOREIGN KEY (DiseasID) REFERENCES healthdetails(DiseaseId) ON DELETE CASCADE, 
     FOREIGN KEY (PatientID) REFERENCES patientinfo(ID) ON DELETE CASCADE
 );
+```
