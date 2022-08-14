@@ -1,12 +1,11 @@
 from PySimpleGUI import *
 import query as q
 import view as v
+import doctorProfile as docP
 
-
-
+SuccessLog=""
 def doctor():
-    user=""
-    passwerd=""
+    
     theme("PythonPlus")
     theme_input_background_color("white")
     theme_input_text_color("Black")
@@ -55,7 +54,11 @@ def doctor():
                     popup_animated("static/images/my.gif",no_titlebar=True,background_color="black",location=(630,200),time_between_frames=30)
                 popup_animated(None)
                 user=value["docuser"]
-                Popup("Welcome\nYou ar successfylly logedin",font=("Monotype Corsiva",20),title="Authorized")            
+                SuccessLog=user
+                Popup("Welcome\nYou ar successfylly logedin",font=("Monotype Corsiva",20),title="Authorized")
+                doc.close()
+                docP.mainCode(value)
+                
                 
             else:
                 for i in range(1500):
