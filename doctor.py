@@ -3,7 +3,6 @@ import query as q
 import view as v
 import doctorProfile as docP
 
-SuccessLog=""
 def doctor():
     
     theme("PythonPlus")
@@ -49,15 +48,15 @@ def doctor():
             break
         elif event=="login":
             res=q.doctorq(value)
+            docP.BMDC(value)
+            
             if res:
                 for i in range(1500):
                     popup_animated("static/images/my.gif",no_titlebar=True,background_color="black",location=(630,200),time_between_frames=30)
                 popup_animated(None)
-                user=value["docuser"]
-                SuccessLog=user
                 Popup("Welcome\nYou ar successfylly logedin",font=("Monotype Corsiva",20),title="Authorized")
                 doc.close()
-                docP.mainCode(value)
+                docP.mainCode()
                 
                 
             else:

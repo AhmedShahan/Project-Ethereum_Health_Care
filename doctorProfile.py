@@ -1,12 +1,11 @@
 from PySimpleGUI import *
 import query as q
 import ValidationWithAdd as valid
-import doctor
+import doctor as d
 
 def predict_text(input, lista):
     pattern = re.compile('.*' + input + '.*')
     return [w for w in lista if re.match(pattern, w)]
-BMDC=doctor.SuccessLog
 ## All the images
 backimg="static/images/back2.png"
 docimg="static/images/doc.png"
@@ -15,7 +14,12 @@ ethimg="static/images/eth444.png"
 mygif="static/images/my1.gif"
 submitimg="static/images/submit.png"
 
+def BMDC(CollectedValue):
+    Bmdc=CollectedValue["docuser"]
+
+
 def mainCode():
+    #BMDC= AllValue["docuser"]
     theme("DarkGreen4")
     theme_button_color("black")
     theme_input_background_color("white")
@@ -186,9 +190,4 @@ def mainCode():
         prediction_list = predict_text(str(in_val), outsp)
         combo_elem.Update(values=prediction_list)
     doc.Close()
-
-if q.ConnectORNOT():
-    mainCode()
-else:
-    popup_auto_close("Database is Not Connected",background_color="#007ACC",font=("Monotype Corsiva",20))
 

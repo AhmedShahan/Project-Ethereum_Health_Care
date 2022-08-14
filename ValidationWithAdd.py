@@ -6,8 +6,8 @@ from PySimpleGUI import *
 
 def checkValidationDoctor(Allvalues):
     formValue="\tPlease Fillup This\n======================="
-    isValied=True
-    
+    isValied=True                
+    #if len(Allvalues["name"])==0:
     # for key, value in Allvalues.items():
     #     if isinstance(value, str) or isinstance(value, list):
     #         if len(value)==0:
