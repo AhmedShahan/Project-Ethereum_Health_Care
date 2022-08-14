@@ -95,7 +95,7 @@ if ConnectORNOT():
             return False
         else:
             return True
-############################ (Doctor Specialist)###################################################
+############################ (Doctor Specialist) ###################################################
     def findSpecialistID(Specialist):
         mycourser.execute("SELECT SpID FROM specialist WHERE SpList=%s",(Specialist,))
         result=mycourser.fetchall()
@@ -123,7 +123,7 @@ if ConnectORNOT():
             yoyo=SPID[k]
             mycourser.execute("INSERT INTO docspecialist VALUES(%s,%s)",(BMDC,yoyo))
         connection.commit() 
-############################(Doctor Personal Info)###################################################
+############################ (Doctor Personal Info) ###################################################
     ## BMDC_Reg Dname DOB Gender NID Passport Mobile Email PresentAddress ParmanentAddress BloodGroup
     def AddDocPersonalInfo(DocPerInfo):
         name=DocPerInfo["name"]
@@ -153,5 +153,5 @@ if ConnectORNOT():
             c=c+1
         # print(name,BMDCreg,Dob,Gender,nid,mobile,passport,email,presentadd,parmanentadd,bloodgroup)
         ## BMDC_Reg Dname DOB Gender NID Passport Mobile Email PresentAddress ParmanentAddress BloodGroup
-        mycourser.execute("INSERT INTO doctorinfo VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",(name,Dob,Gender,nid,passport,mobile,email,presentadd,parmanentadd,bloodgroup))
+        mycourser.execute("INSERT INTO doctorinfo (Dname,DOB,Gender,NID,Passport,Mobile,Email,PresentAddress,ParmanentAddress,Bloodgroup) VALUES ()",(name,Dob,Gender,nid,passport,mobile,email,presentadd,parmanentadd,bloodgroup))
         connection.commit()

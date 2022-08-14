@@ -157,6 +157,7 @@ def mainCode():
                 for i in range(1000):
                     popup_animated(mygif,no_titlebar=True,background_color="black",location=(600,100),time_between_frames=60)
                 popup_animated(None)
+                
                 Popup("Successfully Created Your Profile",font=("Monotype Corsiva",20),title="Unauthorized")                
                 q.AddDocPersonalInfo(values)
                 q.DocSpecialist(values)
@@ -167,6 +168,9 @@ def mainCode():
                 pop=result[1]
                 popup_ok(pop,background_color="black",font=("Times & New Roman",15,"italic"))
                 q.DocSpecialist(values)
+                
+                
+#===============================================================================================
         #This is adding medical degree
         elif event== "add2":
             addDegree=popup_get_text("Enter :")
@@ -190,4 +194,3 @@ def mainCode():
         prediction_list = predict_text(str(in_val), outsp)
         combo_elem.Update(values=prediction_list)
     doc.Close()
-
