@@ -12,8 +12,8 @@ def proctorview():
 
 
     frame=[
-        [Image("static/images/user.png"),Input("Please Enter Administration User",font=("monotype Corsiva",15),justification="center",key="procuser")],
-        [Image("static/images/pass.png"),InputText(password_char=("*"),justification="center",font=("Monotype Corsiva",15),default_text="12345",key="procpass")],
+        [Image("static/images/user.png"),Input("shahan@201",font=("monotype Corsiva",15),justification="center",key="procuser")],
+        [Image("static/images/pass.png"),InputText(password_char=("*"),justification="center",font=("Monotype Corsiva",15),default_text="840223",key="procpass")],
         [Text("\n")],
         [ReadFormButton('', button_color="#001d3c",image_filename="static/images/back 3.png", image_size=(200, 40), image_subsample=2, border_width=0,key="back"),
         ReadFormButton('', button_color="#001d3c",image_filename="static/images/next 3.png", image_size=(200, 40), image_subsample=2, border_width=0,key="next")],

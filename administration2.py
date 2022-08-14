@@ -1,6 +1,6 @@
 from PySimpleGUI import *
-import administration1 as ad1
 import query as q
+import administration1 as ad1
 # import doctorRegistation as doctorreg
 
 
@@ -26,7 +26,7 @@ def adminis():
     frame3=[
         [Button("Test & Images",size=(15,1),font=("Times & New Roman",15,"italic"),key="test"),
         Button("Answer FAQ",size=(15,1),font=("Times & New Roman",15,"italic"),key="faq"),
-        Button("Register Administration",size=(20,1),font=("Times & New Roman",15,"italic"),key="faq"),
+        Button("Register Administration",size=(20,1),font=("Times & New Roman",15,"italic"),key="regAdmin"),
         ],
     ]
 
@@ -48,9 +48,12 @@ def adminis():
     ]
 
     doc=Window("Doctor Login",layout,size=(1000,600),location=(300,100))
+
+    alltheAdministrator=q.retirveAdminis()
+    administrator=list(itertools.chain(*alltheAdministrator))
+    
     allBMDC=q.retriveBMDC()
     BMDCLIST = list(itertools.chain(*allBMDC))
-
     while True:
         event,value=doc.read()
         if event==WIN_CLOSED:
@@ -60,13 +63,35 @@ def adminis():
             if pop=="OK":
                 doc.close()
                 ad1.proctorview()
-        elif event== "regdoc":
-            bmdc=popup_get_text("Enter The Doctor BMDC Registration No")
-            if bmdc==None:
+        
+        elif event=="regAdmin":
+            newUser= popup_get_text("Enter new Administartor UserID:")
+            if newUser==None:
                 continue
-            elif bmdc in BMDCLIST:
-                popup_ok("Already In the Database")
+            elif newUser in administrator:
+                popup("Already in the Administration list")
+                continue
             else:
-                Dpass=popup_get_text("Enter a password: ")
-                q.setDocID(bmdc,Dpass)
-            
+                newpass= popup_get_text("Enter new Administartor Password:")
+                if newpass==None:
+                    continue
+                else:
+                    q.AddAdministrator(newUser,newpass)
+                    popup("New Administrator is added")
+                    
+                    
+                
+        elif event=="regdoc":
+            newUser= popup_get_text("Enter the Doctor BMDC Reg Number: ")
+            if newUser==None:
+                continue
+            elif newUser in BMDCLIST:
+                popup("Already in the Doctor List")
+                continue
+            else:
+                newpass= popup_get_text("Enter Doctor Password:")
+                if newpass==None:
+                    continue
+                else:
+                    q.AddDocID(newUser,newpass)
+                    popup("Doctor Is added")
