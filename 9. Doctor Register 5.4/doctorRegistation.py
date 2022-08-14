@@ -156,12 +156,12 @@ def mainCode():
             result= valid.checkValidationDoctor(values)
             if result[0]:
                 for i in range(1000):
-                    popup_animated("my1.gif",no_titlebar=True,background_color="black",location=(600,100),time_between_frames=60)
+                    popup_animated(mygif,no_titlebar=True,background_color="black",location=(600,100),time_between_frames=60)
                 popup_animated(None)
                 Popup("Successfully Created Your Profile",font=("Monotype Corsiva",20),title="Unauthorized")
             else:
                 for i in range(1000):
-                    popup_animated("my1.gif",no_titlebar=True,background_color="black",location=(600,100),time_between_frames=25)
+                    popup_animated(mygif,no_titlebar=True,background_color="black",location=(600,100),time_between_frames=25)
                 popup_animated(None)
                 pop=result[1]
                 popup_ok(pop,background_color="black",font=("Times & New Roman",15,"italic"))
