@@ -1,5 +1,6 @@
 from PySimpleGUI import *
 import administration1 as ad1
+import query as q
 # import doctorRegistation as doctorreg
 
 
@@ -47,7 +48,8 @@ def adminis():
     ]
 
     doc=Window("Doctor Login",layout,size=(1000,600),location=(300,100))
-
+    allBMDC=q.retriveBMDC()
+    BMDCLIST = list(itertools.chain(*allBMDC))
 
     while True:
         event,value=doc.read()
@@ -58,6 +60,13 @@ def adminis():
             if pop=="OK":
                 doc.close()
                 ad1.proctorview()
-        # elif event== "regdoc":
-        #     doc.close()
-        #     doctorreg.mainCode()
+        elif event== "regdoc":
+            bmdc=popup_get_text("Enter The Doctor BMDC Registration No")
+            if bmdc==None:
+                continue
+            elif bmdc in BMDCLIST:
+                popup_ok("Already In the Database")
+            else:
+                Dpass=popup_get_text("Enter a password: ")
+                q.setDocID(bmdc,Dpass)
+            

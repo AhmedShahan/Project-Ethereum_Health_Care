@@ -70,3 +70,13 @@ if ConnectORNOT():
     def addDegree(getDegree):        
         mycourser.execute("INSERT INTO medicaldegree (degreeList) VALUES (%s)",(getDegree,))
         mycourser.commit()
+        
+    def retriveBMDC():
+        mycourser.execute("SELECT BMDC_Reg FROM doctorinfo")
+        result=mycourser.fetchall()
+        return result
+    
+    def setDocID(GETBMDC,GETPASS):
+        mycourser.execute("INSERT INTO doctorinfo (BMDC_Reg,Docpass) VALUES (%s,%s)",(GETBMDC,GETPASS))
+        mycourser.commit()
+        
