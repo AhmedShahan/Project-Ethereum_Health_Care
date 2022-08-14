@@ -1,3 +1,4 @@
+from PySimpleGUI import *
 import mysql.connector
 from mysql.connector import Error
 
@@ -94,3 +95,63 @@ if ConnectORNOT():
             return False
         else:
             return True
+############################ (Doctor Specialist)###################################################
+    def findSpecialistID(Specialist):
+        mycourser.execute("SELECT SpID FROM specialist WHERE SpList=%s",(Specialist,))
+        result=mycourser.fetchall()
+        return result
+        
+    def DocSpecialist(AllValues):
+        BMDC=113
+        Specialist=AllValues["_COMBO_"]
+        SpecialistInList = list(itertools.chain(*Specialist))
+        #print("Finding Original List",SpecialistInList)
+        MyArray=[]
+        
+        for i in range(0,len(Specialist)):
+            res1=findSpecialistID(SpecialistInList[i])
+            for j in range(0,len(res1)):
+                res2=res1[j]
+                #res3=list(itertools.chain(*res2))
+                MyArray.append(res2)
+        #print(MyArray)
+        SPID=list(itertools.chain(*MyArray))
+        #print(SPID)
+        length=len(SPID)
+        #print(length)
+        for k in range(0,length):
+            yoyo=SPID[k]
+            mycourser.execute("INSERT INTO docspecialist VALUES(%s,%s)",(BMDC,yoyo))
+        connection.commit() 
+############################(Doctor Personal Info)###################################################
+    ## BMDC_Reg Dname DOB Gender NID Passport Mobile Email PresentAddress ParmanentAddress BloodGroup
+    def AddDocPersonalInfo(DocPerInfo):
+        name=DocPerInfo["name"]
+        Dob=DocPerInfo["DateOfBirth"]
+        
+        Gender=None
+        if DocPerInfo[1]==True:
+            Gender="Male"
+        elif DocPerInfo[2]==True:
+            Gender="Female"
+        
+        nid=DocPerInfo["nid"]
+        passport=DocPerInfo["passport"]
+        mobile=DocPerInfo["mobile"]
+        email=DocPerInfo["email"]
+        presentadd=DocPerInfo["present"]
+        parmanentadd=DocPerInfo["parmanent"]
+        
+        
+        bloodgroup=None
+        bloodgrouplist=["O(+ve)","O(-ve)","A(+ve)","A(-ve)","B(+ve)","B(-ve)","AB(+ve)","AB(-ve)",]
+        c=0
+        for i in range(3,11):
+            if DocPerInfo[i]:
+                bloodgroup=bloodgrouplist[c]
+                break
+            c=c+1
+        # print(name,BMDCreg,Dob,Gender,nid,mobile,passport,email,presentadd,parmanentadd,bloodgroup)
+        ## BMDC_Reg Dname DOB Gender NID Passport Mobile Email PresentAddress ParmanentAddress BloodGroup
+        mycourser.execute("INSERT INTO doctorinfo VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",(name,Dob,Gender,nid,passport,mobile,email,presentadd,parmanentadd,bloodgroup))
+        connection.commit()
