@@ -22,7 +22,7 @@ def mainCode():
     colpersonal=[
         [Text("Name", size=(15,1),font=("Times & new roman","12","italic","bold")),InputText(key="name",font=("times & new roman",12,"italic"),size=(30,1),justification="center")],
         [Text("Date of Birth",size=(15,1),font=("Times & new roman","12","italic","bold")),
-        CalendarButton("Date of Birth",target="DateOfBirth",format="%d-%m-%Y",size=(14,1)),
+        CalendarButton("Date of Birth",target="DateOfBirth",format="%Y-%m-%d",size=(14,1)),
         Input(key="DateOfBirth",size=(20,1)),
         ],
         [Text("Gender",size=(15,1),font=("Times & new roman","12","italic","bold")),Radio("Male","g-1",font=("Times & new roman","12","italic")),Radio("Female","g-1",font=("Times & new roman","12","italic"))],
