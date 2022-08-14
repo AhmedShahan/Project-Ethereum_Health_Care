@@ -46,5 +46,9 @@ if ConnectORNOT():
     def removeSpecialist(specialist):
         mycourser.execute("DELETE FROM specialist WHERE SpList=%s",(specialist,))
         connection.commit()
-# if __name__ == "__main__":
-#     main()
+    
+    def AddDocPersonalInfo(DocPerInfo):
+        name=DocPerInfo["name"]
+        Dob=DocPerInfo["DateOfBirth"]
+        # mycourser.execute("INSERT INTO medicaldegree (degreeList) VALUES (%s)",(name,))
+        connection.commit()

@@ -2,7 +2,7 @@ from ast import And
 from msilib.schema import tables
 from PySimpleGUI import *
 
-
+personalinfo=[]
 def create(add_another_degree,headings):
     add_another_degree_Layout=[
         [Table(values=add_another_degree,headings=headings, max_col_width=35,
