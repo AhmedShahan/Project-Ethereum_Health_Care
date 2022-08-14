@@ -20,22 +20,22 @@ def mainCode():
     theme_input_background_color("white")
     theme_input_text_color("#001D3C")
     colpersonal=[
-        [Text("Name", size=(15,1),font=("Times & new roman","12","italic","bold")),InputText(key='Name',font=("times & new roman",12,"italic"),size=(30,1),justification="center")],
+        [Text("Name", size=(15,1),font=("Times & new roman","12","italic","bold")),InputText(key="name",font=("times & new roman",12,"italic"),size=(30,1),justification="center")],
         [Text("Date of Birth",size=(15,1),font=("Times & new roman","12","italic","bold")),
         CalendarButton("Date of Birth",target="DateOfBirth",format="%d-%m-%Y",size=(14,1)),
         Input(key="DateOfBirth",size=(20,1)),
         ],
-        [Text("Gender",size=(15,1),font=("Times & new roman","12","italic","bold")),Radio("Male","g-1",default=True, font=("Times & new roman","12","italic")),Radio("Female","g-1",font=("Times & new roman","12","italic"))],
-        [Text("NID Number",size=(15,1),font=("Times & new roman","12","italic","bold")),InputText(font=("times & new roman",12,"italic"),size=(30,1),justification="center",key="NID")],
-        [Text("Passport Number",size=(15,1),font=("Times & new roman","12","italic","bold")),InputText(font=("times & new roman",12,"italic"),size=(30,1),justification="center",key="Passport Number")],
-        [Text("Mobile Number",size=(15,1),font=("Times & new roman","12","italic","bold")),InputText(font=("times & new roman",12,"italic"),size=(30,1),justification="center",key="Mobile Number")],
-        [Text("Email Address",size=(15,1),font=("Times & new roman","12","italic","bold")),InputText(font=("times & new roman",12,"italic"),size=(30,1),justification="center",key="Email Address")],
-        [Text("Present Address",size=(15,1),font=("Times & new roman","12","italic","bold")),Multiline(font=("times & new roman",12,"italic"),size=(30,3),justification="center",key="Present Address")],
-        [Text("Parmanent Address",size=(15,1),font=("Times & new roman","12","italic","bold")),Multiline(font=("times & new roman",12,"italic"),size=(30,3),justification="center",key="Parmanent Address")],
+        [Text("Gender",size=(15,1),font=("Times & new roman","12","italic","bold")),Radio("Male","g-1",font=("Times & new roman","12","italic")),Radio("Female","g-1",font=("Times & new roman","12","italic"))],
+        [Text("NID Number",size=(15,1),font=("Times & new roman","12","italic","bold")),InputText(key="nid",font=("times & new roman",12,"italic"),size=(30,1),justification="center")],
+        [Text("Passport Number",size=(15,1),font=("Times & new roman","12","italic","bold")),InputText(key="passport",font=("times & new roman",12,"italic"),size=(30,1),justification="center")],
+        [Text("Mobile Number",size=(15,1),font=("Times & new roman","12","italic","bold")),InputText(key="mobile",font=("times & new roman",12,"italic"),size=(30,1),justification="center")],
+        [Text("Email Address",size=(15,1),font=("Times & new roman","12","italic","bold")),InputText(key="email",font=("times & new roman",12,"italic"),size=(30,1),justification="center")],
+        [Text("Present Address",size=(15,1),font=("Times & new roman","12","italic","bold")),Multiline(key="present",font=("times & new roman",12,"italic"),size=(30,3),justification="center")],
+        [Text("Parmanent Address",size=(15,1),font=("Times & new roman","12","italic","bold")),Multiline(key="parmanent",font=("times & new roman",12,"italic"),size=(30,3),justification="center")],
         
         
         [Text('Blood Group', font=('Monotype Corsiva', 15), justification='left')], 
-        [Radio('O (+Ve)', 'blood', default=True, size=(12, 1)), Radio('O (-Ve)', 'blood',size=(12, 1))],  
+        [Radio('O (+Ve)', 'blood',size=(12, 1)), Radio('O (-Ve)', 'blood',size=(12, 1))],  
         [Radio('A (+Ve)', 'blood', size=(12, 1)), Radio('A (-Ve)', 'blood', size=(12, 1))],      
         [Radio('B (+Ve)', 'blood', size=(12, 1)), Radio('B (-Ve)', 'blood', size=(12, 1))],      
         [Radio('AB (+Ve)', 'blood', size=(12, 1)), Radio('AB (-Ve)', 'blood', size=(12, 1))],
@@ -46,27 +46,26 @@ def mainCode():
     outdegree = list(itertools.chain(*degree))
     
     colmedicalHis=[
-        [Text("BMDC Registration No",size=(17,1),font=("Times & new roman","12","italic","bold")),InputText(font=("times & new roman",12,"italic"),size=(10,1),justification="center")],
+        [Text("BMDC Registration No",size=(17,1),font=("Times & new roman","12","italic","bold")),InputText(key="bmdc",font=("times & new roman",12,"italic"),size=(10,1),justification="center")],
         
         [Text('Specialist IN',size=(10,1),font=("Times & new roman","12","italic","bold")), Text('', key='_OUTPUT_'),In(key='_INPUT_',size=(15,1))],
         [Text("\t"*2),Listbox(specialist,size=(15,5), key='_COMBO_',select_mode="multiple"),Button("+ ADD +",key="add1"),Button("+ Remove +",key="remove")],
         
         
         
-        [Text("Medical College Details",font=("Monotype Corsiva",17,"bold"),text_color="Yellow")],
+        [Text("Last Medical College Details",font=("Monotype Corsiva",17,"bold"),text_color="Yellow")],
         [Text("Select Your Degree",font=("Times & new roman","12","italic","bold"),size=(17,1)),Combo(values=outdegree,key="degreeCombo",size=(15,1)),Button("+ ADD +",key="add2")],
-        [Text("Name of The Medical",size=(17,1),font=("Times & new roman","12","italic","bold")),InputText(key="medicalName",size=(30,1))],
-        [Text("Medical Location",size=(17,1),font=("Times & new roman","12","italic","bold")),InputText(key="medicalLoc",size=(30,1))],
-        [Text('Year of Passing',size=(17,1),font=("Times & new roman","12","italic","bold")),InputText(key="passyear",size=(15,1))],
-        [Text("\t"*2),Button("ADD ANOTHER DEGREE",key="addanother")],
+        [Text("Name of The Medical",size=(17,1),font=("Times & new roman","12","italic","bold")),InputText(size=(30,1))],
+        [Text("Medical Location",size=(17,1),font=("Times & new roman","12","italic","bold")),InputText(size=(30,1))],
+        [Text('Year of Passing',size=(17,1),font=("Times & new roman","12","italic","bold")),InputText(size=(15,1))],
         
         [Text("Consultation Location",font=("Monotype Corsiva",17,"bold"),text_color="Yellow")],
         [Text("Name of The Medical / Digonostic Center",size=(33,1),font=("Times & new roman","12","italic","bold"))],
-        [InputText(key="medicalName",size=(56,1))],
+        [InputText(size=(56,1))],
         
         [Text("Location",size=(10,1),font=("Times & new roman","12","italic","bold")),
-        InputText(key="medicalName",size=(40,1))],
-        [Text("Zip Code",size=(10,1),font=("Times & new roman","12","italic","bold")),InputText(key="zip",size=(40,1))],
+        InputText(size=(40,1))],
+        [Text("Zip Code",size=(10,1),font=("Times & new roman","12","italic","bold")),InputText(size=(40,1))],
     ]
 
     
@@ -158,14 +157,15 @@ def mainCode():
                 for i in range(1000):
                     popup_animated(mygif,no_titlebar=True,background_color="black",location=(600,100),time_between_frames=60)
                 popup_animated(None)
-                q.AddDocPersonalInfo(values)
                 Popup("Successfully Created Your Profile",font=("Monotype Corsiva",20),title="Unauthorized")
+                q.AddDocPersonalInfo(values)
             else:
                 for i in range(1000):
                     popup_animated(mygif,no_titlebar=True,background_color="black",location=(600,100),time_between_frames=25)
                 popup_animated(None)
                 pop=result[1]
                 popup_ok(pop,background_color="black",font=("Times & New Roman",15,"italic"))
+        
         #This is adding medical degree
         elif event== "add2":
             addDegree=popup_get_text("Enter :")
