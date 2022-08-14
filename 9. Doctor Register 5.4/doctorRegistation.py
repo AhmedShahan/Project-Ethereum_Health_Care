@@ -46,13 +46,6 @@ def mainCode():
     outdegree = list(itertools.chain(*degree))
     
     colmedicalHis=[
-        [Text("BMDC Registration No",size=(17,1),font=("Times & new roman","12","italic","bold")),InputText(key="bmdc",font=("times & new roman",12,"italic"),size=(10,1),justification="center")],
-        
-        [Text('Specialist IN',size=(10,1),font=("Times & new roman","12","italic","bold")), Text('', key='_OUTPUT_'),In(key='_INPUT_',size=(15,1))],
-        [Text("\t"*2),Listbox(specialist,size=(15,5), key='_COMBO_',select_mode="multiple"),Button("+ ADD +",key="add1"),Button("+ Remove +",key="remove")],
-        
-        
-        
         [Text("Last Medical College Details",font=("Monotype Corsiva",17,"bold"),text_color="Yellow")],
         [Text("Select Your Degree",font=("Times & new roman","12","italic","bold"),size=(17,1)),Combo(values=outdegree,key="degreeCombo",size=(15,1)),Button("+ ADD +",key="add2")],
         [Text("Name of The Medical",size=(17,1),font=("Times & new roman","12","italic","bold")),InputText(size=(30,1))],
@@ -66,9 +59,9 @@ def mainCode():
         [Text("Location",size=(10,1),font=("Times & new roman","12","italic","bold")),
         InputText(size=(40,1))],
         [Text("Zip Code",size=(10,1),font=("Times & new roman","12","italic","bold")),InputText(size=(40,1))],
+        [Text('Specialist IN',size=(10,1),font=("Times & new roman","12","italic","bold")), Text('', key='_OUTPUT_'),In(key='_INPUT_',size=(15,1))],
+        [Text("\t"*2),Listbox(specialist,size=(15,5), key='_COMBO_',select_mode="multiple"),Button("+ ADD +",key="add1"),Button("+ Remove +",key="remove")],
     ]
-
-    
     frame1=[
         [
             Column(colpersonal)
@@ -150,22 +143,25 @@ def mainCode():
             addDegreeArray.append(DegreeArray)
             popup_auto_close("Added")
             valid.create(addDegreeArray,headings)
-        
+#==================================================================================================================
+                                ##SUBMIT SECTION
+#===============================================================================================================
         elif event == "submit":
             result= valid.checkValidationDoctor(values)
             if result[0]:
                 for i in range(1000):
                     popup_animated(mygif,no_titlebar=True,background_color="black",location=(600,100),time_between_frames=60)
                 popup_animated(None)
-                Popup("Successfully Created Your Profile",font=("Monotype Corsiva",20),title="Unauthorized")
+                Popup("Successfully Created Your Profile",font=("Monotype Corsiva",20),title="Unauthorized")                
                 q.AddDocPersonalInfo(values)
+                q.DocSpecialist(values)
             else:
                 for i in range(1000):
                     popup_animated(mygif,no_titlebar=True,background_color="black",location=(600,100),time_between_frames=25)
                 popup_animated(None)
                 pop=result[1]
                 popup_ok(pop,background_color="black",font=("Times & New Roman",15,"italic"))
-        
+                q.DocSpecialist(values)
         #This is adding medical degree
         elif event== "add2":
             addDegree=popup_get_text("Enter :")

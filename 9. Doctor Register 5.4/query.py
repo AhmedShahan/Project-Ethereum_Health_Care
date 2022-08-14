@@ -1,4 +1,4 @@
-from turtle import Turtle
+from PySimpleGUI import *
 import mysql.connector
 from mysql.connector import Error
 
@@ -47,9 +47,11 @@ if ConnectORNOT():
     def removeSpecialist(specialist):
         mycourser.execute("DELETE FROM specialist WHERE SpList=%s",(specialist,))
         connection.commit()
+        
+        
+############################(Doctor Personal Info)###################################################
     ## BMDC_Reg Dname DOB Gender NID Passport Mobile Email PresentAddress ParmanentAddress BloodGroup
     def AddDocPersonalInfo(DocPerInfo):
-        BMDCreg=DocPerInfo["bmdc"]
         name=DocPerInfo["name"]
         Dob=DocPerInfo["DateOfBirth"]
         
@@ -77,5 +79,46 @@ if ConnectORNOT():
             c=c+1
         # print(name,BMDCreg,Dob,Gender,nid,mobile,passport,email,presentadd,parmanentadd,bloodgroup)
         ## BMDC_Reg Dname DOB Gender NID Passport Mobile Email PresentAddress ParmanentAddress BloodGroup
-        mycourser.execute("INSERT INTO doctorinfo VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",(BMDCreg,name,Dob,Gender,nid,passport,mobile,email,presentadd,parmanentadd,bloodgroup))
+        mycourser.execute("INSERT INTO doctorinfo VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",(name,Dob,Gender,nid,passport,mobile,email,presentadd,parmanentadd,bloodgroup))
         connection.commit()
+############################ (Doctor Specialist)###################################################
+    def findSpecialistID(Specialist):
+        mycourser.execute("SELECT SpID FROM specialist WHERE SpList=%s",(Specialist,))
+        result=mycourser.fetchall()
+        return result
+        
+    def DocSpecialist(AllValues):
+        BMDC=113
+        Specialist=AllValues["_COMBO_"]
+        SpecialistInList = list(itertools.chain(*Specialist))
+        #print("Finding Original List",SpecialistInList)
+        MyArray=[]
+        
+        for i in range(0,len(Specialist)):
+            res1=findSpecialistID(SpecialistInList[i])
+            for j in range(0,len(res1)):
+                res2=res1[j]
+                #res3=list(itertools.chain(*res2))
+                MyArray.append(res2)
+        #print(MyArray)
+        SPID=list(itertools.chain(*MyArray))
+        #print(SPID)
+        length=len(SPID)
+        #print(length)
+        for k in range(0,length):
+            yoyo=SPID[k]
+            mycourser.execute("INSERT INTO docspecialist VALUES(%s,%s)",(BMDC,yoyo))
+        connection.commit()           
+            
+
+        # for i in range(0,len(Specialist)):
+        #     res=findSpecialistID(Specialist[i])
+        #     res=list(itertools.chain(*Specialist))
+        #     print(res)
+        #for i in range(0,len(Specialist)):
+            # SPID=findSpecialistID(SpecialistInList[i])
+            # print(BMDC)
+            # print(SPID)
+            # mycourser.execute("INSERT INTO docspecialist1 VALUES(%s,%s)",(BMDC,SPID))
+            # connection.commit()
+        
