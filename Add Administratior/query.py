@@ -57,4 +57,13 @@ if ConnectORNOT():
         mycourser.execute("INSERT INTO administrationlog VALUES (%s,%s)",(NewAdmin,password))
         connection.commit()
         
+    def retriveBMDC():
+        mycourser.execute("SELECT BMDC_Reg FROM doctorinfo")
+        result=mycourser.fetchall()
+        return result
+
+    def AddDocID(GETBMDC,GETPASS):
+        mycourser.execute("INSERT INTO doctorinfo (BMDC_Reg,Docpass) VALUES (%s,%s)",(GETBMDC,GETPASS))
+        connection.commit()
+        
         

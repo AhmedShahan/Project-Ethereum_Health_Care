@@ -51,6 +51,9 @@ def adminis():
 
     alltheAdministrator=q.retirveAdminis()
     administrator=list(itertools.chain(*alltheAdministrator))
+    
+    allBMDC=q.retriveBMDC()
+    BMDCLIST = list(itertools.chain(*allBMDC))
     while True:
         event,value=doc.read()
         if event==WIN_CLOSED:
@@ -78,6 +81,23 @@ def adminis():
                 else:
                     q.AddAdministrator(newUser,newpass)
                     popup("New Administrator is added")
+                    
+                    
+                
+        elif event=="regdoc":
+            newUser= popup_get_text("Enter the Doctor BMDC Reg Number: ")
+            if newUser==None:
+                continue
+            elif newUser in BMDCLIST:
+                popup("Already in the Doctor List")
+                continue
+            else:
+                newpass= popup_get_text("Enter Doctor Password:")
+                if newpass==None:
+                    continue
+                else:
+                    q.AddDocID(newUser,newpass)
+                    popup("Doctor Is added")
                 
 if q.ConnectORNOT():
     adminis()
