@@ -158,7 +158,6 @@ def mainCode():
                 
                 Popup("Successfully Created Your Profile",font=("Monotype Corsiva",20),title="Unauthorized")                
                 q.UpdateDocPersonalInfo(values,ActiveId)
-                print(ActiveId)
                 #q.DocSpecialist(values,Active)
             else:
                 for i in range(1000):
@@ -186,7 +185,7 @@ def mainCode():
             res=popup_ok_cancel("Your All the Inserted Data will Be Removed")
             if res=="OK":
                 doc.close()
-                ##Call the previous Page
+                d.doctor()
         # autofill the SPecialist
         in_val = values['_INPUT_']
         prediction_list = predict_text(str(in_val), outsp)

@@ -126,7 +126,7 @@ if ConnectORNOT():
 ############################ (Doctor Personal Info) ###################################################
     ## BMDC_Reg Dname DOB Gender NID Passport Mobile Email PresentAddress ParmanentAddress BloodGroup
     def UpdateDocPersonalInfo(DocPerInfo,BMDC):
-        print(BMDC)
+
         name=DocPerInfo["name"]
         Dob=DocPerInfo["DateOfBirth"]
         

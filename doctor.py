@@ -1,10 +1,10 @@
+from argparse import Action
 from PySimpleGUI import *
 import query as q
 import view as v
 import doctorProfile as docP
 
 Active=[]
-
 def doctor():
     
     theme("PythonPlus")
@@ -54,7 +54,6 @@ def doctor():
                 for i in range(1500):
                     popup_animated("static/images/my.gif",no_titlebar=True,background_color="black",location=(630,200),time_between_frames=30)
                 popup_animated(None)
-                
                 
                 Popup("Welcome\nYou ar successfylly logedin",font=("Monotype Corsiva",20),title="Authorized")
                 Active.append(value["docuser"])
