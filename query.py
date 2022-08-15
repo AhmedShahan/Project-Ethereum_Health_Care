@@ -101,8 +101,8 @@ if ConnectORNOT():
         result=mycourser.fetchall()
         return result
         
-    def DocSpecialist(AllValues):
-        BMDC=113
+    def DocSpecialist(AllValues,BMDC):
+        Bmdc=BMDC
         Specialist=AllValues["_COMBO_"]
         SpecialistInList = list(itertools.chain(*Specialist))
         #print("Finding Original List",SpecialistInList)
@@ -121,11 +121,12 @@ if ConnectORNOT():
         #print(length)
         for k in range(0,length):
             yoyo=SPID[k]
-            mycourser.execute("INSERT INTO docspecialist VALUES(%s,%s)",(BMDC,yoyo))
+            mycourser.execute("INSERT INTO docspecialist VALUES(%s,%s)",(Bmdc,yoyo))
         connection.commit() 
 ############################ (Doctor Personal Info) ###################################################
     ## BMDC_Reg Dname DOB Gender NID Passport Mobile Email PresentAddress ParmanentAddress BloodGroup
-    def AddDocPersonalInfo(DocPerInfo):
+    def UpdateDocPersonalInfo(DocPerInfo,BMDC):
+        print(BMDC)
         name=DocPerInfo["name"]
         Dob=DocPerInfo["DateOfBirth"]
         
@@ -153,5 +154,5 @@ if ConnectORNOT():
             c=c+1
         # print(name,BMDCreg,Dob,Gender,nid,mobile,passport,email,presentadd,parmanentadd,bloodgroup)
         ## BMDC_Reg Dname DOB Gender NID Passport Mobile Email PresentAddress ParmanentAddress BloodGroup
-        mycourser.execute("INSERT INTO doctorinfo (Dname,DOB,Gender,NID,Passport,Mobile,Email,PresentAddress,ParmanentAddress,Bloodgroup) VALUES ()",(name,Dob,Gender,nid,passport,mobile,email,presentadd,parmanentadd,bloodgroup))
+        mycourser.execute("UPDATE doctorinfo SET Dname=%s, DOB=%s,Gender=%s, NID=%s, Passport=%s, Mobile=%s, Email=%s, PresentAddress=%s, ParmanentAddress=%s, Bloodgroup=%s WHERE BMDC_Reg=%s",(name,Dob,Gender,nid,passport,mobile,email,presentadd,parmanentadd,bloodgroup,BMDC))
         connection.commit()

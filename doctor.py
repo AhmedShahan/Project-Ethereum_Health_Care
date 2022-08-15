@@ -3,6 +3,8 @@ import query as q
 import view as v
 import doctorProfile as docP
 
+Active=[]
+
 def doctor():
     
     theme("PythonPlus")
@@ -14,11 +16,11 @@ def doctor():
     frame=[
         [
         Text("Dr User ID",size=(10,1),font=("Monotype Corsiva",20)),
-        InputText("Hello Dr. Enter Your Doctor ID",size=(30,1),justification="center",font=("Monotype Corsiva",15),key="docuser"),
+        InputText("@2013168",size=(30,1),justification="center",font=("Monotype Corsiva",15),key="docuser"),
         ],
         [
         Text("Password ",size=(10,1),font=("Monotype Corsiva",20)),
-        InputText(size=(30,1),password_char=("*"),justification="center",font=("Monotype Corsiva",15),default_text="Password",key="docpass"),
+        InputText(size=(30,1),password_char=("*"),justification="center",font=("Monotype Corsiva",15),default_text="shahan",key="docpass"),
         ],
         [
             Text("\n\n\n\n\n"),
@@ -48,13 +50,14 @@ def doctor():
             break
         elif event=="login":
             res=q.doctorq(value)
-            docP.BMDC(value)
-            
             if res:
                 for i in range(1500):
                     popup_animated("static/images/my.gif",no_titlebar=True,background_color="black",location=(630,200),time_between_frames=30)
                 popup_animated(None)
+                
+                
                 Popup("Welcome\nYou ar successfylly logedin",font=("Monotype Corsiva",20),title="Authorized")
+                Active.append(value["docuser"])
                 doc.close()
                 docP.mainCode()
                 

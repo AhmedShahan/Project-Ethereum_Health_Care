@@ -14,12 +14,11 @@ ethimg="static/images/eth444.png"
 mygif="static/images/my1.gif"
 submitimg="static/images/submit.png"
 
-def BMDC(CollectedValue):
-    Bmdc=CollectedValue["docuser"]
-
 
 def mainCode():
-    #BMDC= AllValue["docuser"]
+    
+    #Active=q.CurrentActive
+    ActiveId=d.Active[0]
     theme("DarkGreen4")
     theme_button_color("black")
     theme_input_background_color("white")
@@ -111,7 +110,6 @@ def mainCode():
     
     while True:             # Event Loop
         event, values = doc.Read()
-        values
         if event == WIN_CLOSED:
             break
         elif event=="add1":
@@ -159,15 +157,15 @@ def mainCode():
                 popup_animated(None)
                 
                 Popup("Successfully Created Your Profile",font=("Monotype Corsiva",20),title="Unauthorized")                
-                q.AddDocPersonalInfo(values)
-                q.DocSpecialist(values)
+                q.UpdateDocPersonalInfo(values,ActiveId)
+                print(ActiveId)
+                #q.DocSpecialist(values,Active)
             else:
                 for i in range(1000):
                     popup_animated(mygif,no_titlebar=True,background_color="black",location=(600,100),time_between_frames=25)
                 popup_animated(None)
                 pop=result[1]
                 popup_ok(pop,background_color="black",font=("Times & New Roman",15,"italic"))
-                q.DocSpecialist(values)
                 
                 
 #===============================================================================================
@@ -194,3 +192,4 @@ def mainCode():
         prediction_list = predict_text(str(in_val), outsp)
         combo_elem.Update(values=prediction_list)
     doc.Close()
+    
