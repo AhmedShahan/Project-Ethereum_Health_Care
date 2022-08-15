@@ -160,6 +160,16 @@ if ConnectORNOT():
     def DeleteSpecialistList(BMDC):
         mycourser.execute("DELETE FROM docspecialist WHERE DocID=%s",(BMDC,))
         connection.commit()
+        
+        
+################################### Search Your Doctor #######################################
+    def SearchDoctor(GetValue):
+        Specialist=GetValue["_COMBO_"]
+        SpecialistInList = list(itertools.chain(*Specialist))
+        pelam=SpecialistInList[0]
+        mycourser.execute("SELECT Dname FROM doctorinfo d, specialist s, docspecialist sd WHERE d.BMDC_Reg=sd.DocID AND sd.SpListID=s.SpID AND s.SpList=%s",(pelam,))
+        result=mycourser.fetchall()
+        return result
 # ############################ (Doctor Medical History) ###################################################
 #     def findMedicalID(medName):
 #         mycourser.execute("SELECT MedID FROM medicaldegree WHERE DegreeList=%s",(medName,))
