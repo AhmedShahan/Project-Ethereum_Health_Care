@@ -14,28 +14,59 @@ ethimg="static/images/eth444.png"
 mygif="static/images/my1.gif"
 submitimg="static/images/submit.png"
 
+    # Updating from query
+
+
+
+
+
 
 def mainCode():
-    
-    #Active=q.CurrentActive
     ActiveId=d.Active[0]
+    
+#================Retrive and Show in the Input Box ===============
+    DoctorInfo=q.RetrivDoctorInfo(ActiveId)
+    DoctorInfoList=list(itertools.chain(*DoctorInfo))
+    print(DoctorInfoList)
+    nameee=DoctorInfoList[0]
+    dateOf=DoctorInfoList[1]
+   
+   
+   
+    '''
+    gender=DoctorInfoList[2],
+    male=False
+    fem=False
+    if gender=="Male":
+        male=True
+    if gender==('Female',) or gender=="Female":
+        fem=True
+    '''
+    Nid=DoctorInfoList[3]
+    Passport=DoctorInfoList[4]
+    Mobile=DoctorInfoList[5]
+    Email=DoctorInfoList[6]
+    PreAdd=DoctorInfoList[7]
+    PermanAdd=DoctorInfoList[8]
+    #bgroup=DoctorInfoList[9]
+    
     theme("DarkGreen4")
     theme_button_color("black")
     theme_input_background_color("white")
     theme_input_text_color("#001D3C")
     colpersonal=[
-        [Text("Name", size=(15,1),font=("Times & new roman","12","italic","bold")),InputText(key="name",font=("times & new roman",12,"italic"),size=(30,1),justification="center")],
+        [Text("Name", size=(15,1),font=("Times & new roman","12","italic","bold")),InputText(default_text=nameee,key="name",font=("times & new roman",12,"italic"),size=(30,1),justification="center")],
         [Text("Date of Birth",size=(15,1),font=("Times & new roman","12","italic","bold")),
         CalendarButton("Date of Birth",target="DateOfBirth",format="%Y-%m-%d",size=(14,1)),
-        Input(key="DateOfBirth",size=(20,1)),
+        Input(default_text=dateOf,key="DateOfBirth",size=(20,1)),
         ],
         [Text("Gender",size=(15,1),font=("Times & new roman","12","italic","bold")),Radio("Male","g-1",font=("Times & new roman","12","italic")),Radio("Female","g-1",font=("Times & new roman","12","italic"))],
-        [Text("NID Number",size=(15,1),font=("Times & new roman","12","italic","bold")),InputText(key="nid",font=("times & new roman",12,"italic"),size=(30,1),justification="center")],
-        [Text("Passport Number",size=(15,1),font=("Times & new roman","12","italic","bold")),InputText(key="passport",font=("times & new roman",12,"italic"),size=(30,1),justification="center")],
-        [Text("Mobile Number",size=(15,1),font=("Times & new roman","12","italic","bold")),InputText(key="mobile",font=("times & new roman",12,"italic"),size=(30,1),justification="center")],
-        [Text("Email Address",size=(15,1),font=("Times & new roman","12","italic","bold")),InputText(key="email",font=("times & new roman",12,"italic"),size=(30,1),justification="center")],
-        [Text("Present Address",size=(15,1),font=("Times & new roman","12","italic","bold")),Multiline(key="present",font=("times & new roman",12,"italic"),size=(30,3),justification="center")],
-        [Text("Parmanent Address",size=(15,1),font=("Times & new roman","12","italic","bold")),Multiline(key="parmanent",font=("times & new roman",12,"italic"),size=(30,3),justification="center")],
+        [Text("NID Number",size=(15,1),font=("Times & new roman","12","italic","bold")),InputText(key="nid",default_text=Nid,font=("times & new roman",12,"italic"),size=(30,1),justification="center")],
+        [Text("Passport Number",size=(15,1),font=("Times & new roman","12","italic","bold")),InputText(key="passport",default_text=Passport,font=("times & new roman",12,"italic"),size=(30,1),justification="center")],
+        [Text("Mobile Number",size=(15,1),font=("Times & new roman","12","italic","bold")),InputText(key="mobile",default_text=Mobile,font=("times & new roman",12,"italic"),size=(30,1),justification="center")],
+        [Text("Email Address",size=(15,1),font=("Times & new roman","12","italic","bold")),InputText(key="email",default_text=Email,font=("times & new roman",12,"italic"),size=(30,1),justification="center")],
+        [Text("Present Address",size=(15,1),font=("Times & new roman","12","italic","bold")),Multiline(key="present",default_text=PreAdd,font=("times & new roman",12,"italic"),size=(30,3),justification="center")],
+        [Text("Parmanent Address",size=(15,1),font=("Times & new roman","12","italic","bold")),Multiline(key="parmanent",default_text=PermanAdd,font=("times & new roman",12,"italic"),size=(30,3),justification="center")],
         
         
         [Text('Blood Group', font=('Monotype Corsiva', 15), justification='left')], 
@@ -190,5 +221,8 @@ def mainCode():
         in_val = values['_INPUT_']
         prediction_list = predict_text(str(in_val), outsp)
         combo_elem.Update(values=prediction_list)
+    
+        #===================================================
+
     doc.Close()
     

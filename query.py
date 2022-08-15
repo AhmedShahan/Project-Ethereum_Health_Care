@@ -156,3 +156,9 @@ if ConnectORNOT():
         ## BMDC_Reg Dname DOB Gender NID Passport Mobile Email PresentAddress ParmanentAddress BloodGroup
         mycourser.execute("UPDATE doctorinfo SET Dname=%s, DOB=%s,Gender=%s, NID=%s, Passport=%s, Mobile=%s, Email=%s, PresentAddress=%s, ParmanentAddress=%s, Bloodgroup=%s WHERE BMDC_Reg=%s",(name,Dob,Gender,nid,passport,mobile,email,presentadd,parmanentadd,bloodgroup,BMDC))
         connection.commit()
+        
+    
+    def RetrivDoctorInfo(DocID):
+        mycourser.execute("SELECT Dname,DOB,Gender,NID,Passport,Mobile,Email,PresentAddress,PresentAddress,Bloodgroup FROM doctorinfo WHERE BMDC_Reg=%s",(DocID,))
+        result=mycourser.fetchall()
+        return result
