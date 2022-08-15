@@ -95,34 +95,7 @@ if ConnectORNOT():
             return False
         else:
             return True
-############################ (Doctor Specialist) ###################################################
-    def findSpecialistID(Specialist):
-        mycourser.execute("SELECT SpID FROM specialist WHERE SpList=%s",(Specialist,))
-        result=mycourser.fetchall()
-        return result
-        
-    def DocSpecialist(AllValues,BMDC):
-        Bmdc=BMDC
-        Specialist=AllValues["_COMBO_"]
-        SpecialistInList = list(itertools.chain(*Specialist))
-        #print("Finding Original List",SpecialistInList)
-        MyArray=[]
-        
-        for i in range(0,len(Specialist)):
-            res1=findSpecialistID(SpecialistInList[i])
-            for j in range(0,len(res1)):
-                res2=res1[j]
-                #res3=list(itertools.chain(*res2))
-                MyArray.append(res2)
-        #print(MyArray)
-        SPID=list(itertools.chain(*MyArray))
-        #print(SPID)
-        length=len(SPID)
-        #print(length)
-        for k in range(0,length):
-            yoyo=SPID[k]
-            mycourser.execute("INSERT INTO docspecialist VALUES(%s,%s)",(Bmdc,yoyo))
-        connection.commit() 
+
 ############################ (Doctor Personal Info) ###################################################
     ## BMDC_Reg Dname DOB Gender NID Passport Mobile Email PresentAddress ParmanentAddress BloodGroup
     def UpdateDocPersonalInfo(DocPerInfo,BMDC):
@@ -162,3 +135,26 @@ if ConnectORNOT():
         mycourser.execute("SELECT Dname,DOB,Gender,NID,Passport,Mobile,Email,PresentAddress,PresentAddress,Bloodgroup FROM doctorinfo WHERE BMDC_Reg=%s",(DocID,))
         result=mycourser.fetchall()
         return result
+############################ (Doctor Specialist) ###################################################
+    def findSpecialistID(Specialist):
+        mycourser.execute("SELECT SpID FROM specialist WHERE SpList=%s",(Specialist,))
+        result=mycourser.fetchall()
+        return result
+        
+    def DocSpecialist(AllValues,BMDC):
+        Specialist=AllValues["_COMBO_"]
+        SpecialistInList = list(itertools.chain(*Specialist))
+        #print("Finding Original List",SpecialistInList)
+        MyArray=[]
+        
+        for i in range(0,len(Specialist)):
+            res1=findSpecialistID(SpecialistInList[i])
+            for j in range(0,len(res1)):
+                res2=res1[j]
+                MyArray.append(res2)
+        SPID=list(itertools.chain(*MyArray))
+        length=len(SPID)
+        for k in range(0,length):
+            yoyo=SPID[k]
+            mycourser.execute("INSERT INTO docspecialist VALUES(%s,%s)",(BMDC,yoyo))
+        connection.commit() 
