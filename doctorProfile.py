@@ -217,8 +217,13 @@ def mainCode():
         elif event=="back":
             res=popup_ok_cancel("Your All the Inserted Data will Be Removed")
             if res=="OK":
+                d.Active=[]
+                print(d.Active)
                 doc.close()
                 d.doctor()
+        
+        
+        
         # autofill the SPecialist
         in_val = values['_INPUT_']
         prediction_list = predict_text(str(in_val), outsp)
