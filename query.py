@@ -171,25 +171,25 @@ if ConnectORNOT():
         result=mycourser.fetchall()
         return result
 # ############################ (Doctor Medical History) ###################################################
-#     def findMedicalID(medName):
-#         mycourser.execute("SELECT MedID FROM medicaldegree WHERE DegreeList=%s",(medName,))
-#         result=mycourser.fetchall()
-#         return result
+    def findMedicalID(medName):
+        mycourser.execute("SELECT MedID FROM medicaldegree WHERE DegreeList=%s",(medName,))
+        result=mycourser.fetchall()
+        return result
         
-#     def DocMedicalHis(AllValues,BMDC):
-#         MedicalDegree=AllValues["degreeCombo"]
-#         MedDegList = list(itertools.chain(*MedicalDegree))
-#         #print("Finding Original List",SpecialistInList)
-#         MyArray=[]
+    def DocMedicalHis(AllValues,BMDC):
+        MedicalDegree=AllValues["degreeCombo"]
+        MedDegList = list(itertools.chain(*MedicalDegree))
+        #print("Finding Original List",SpecialistInList)
+        MyArray=[]
         
-#         for i in range(0,len(MedicalDegree)):
-#             res1=findMedicalID(MedDegList[i])
-#             for j in range(0,len(res1)):
-#                 res2=res1[j]
-#                 MyArray.append(res2)
-#         MEDID=list(itertools.chain(*MyArray))
-#         length=len(MEDID)
-#         for k in range(0,length):
-#             yoyo=MEDID[k]
-#             mycourser.execute("INSERT INTO docspecialist VALUES(%s,%s)",(BMDC,yoyo))
-#         connection.commit() 
+        for i in range(0,len(MedicalDegree)):
+            res1=findMedicalID(MedDegList[i])
+            for j in range(0,len(res1)):
+                res2=res1[j]
+                MyArray.append(res2)
+        MEDID=list(itertools.chain(*MyArray))
+        length=len(MEDID)
+        for k in range(0,length):
+            yoyo=MEDID[k]
+            mycourser.execute("INSERT INTO medicalhis VALUES(%s,%s)",(yoyo,BMDC))
+        connection.commit()

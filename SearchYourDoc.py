@@ -18,10 +18,15 @@ col1=[
     [Text('Specialist IN',size=(10,1),font=("Times & new roman","12","italic","bold")), Text('', key='_OUTPUT_'),In(key='_INPUT_',size=(15,1))],
     [Text("\t"*2),Listbox(specialist,size=(15,5), key='_COMBO_',select_mode="single",background_color="White",text_color="Black")], 
 ]
+col2=[
+    [Text("Select Gender If You Want")],
+    [Radio("Male","G1"),Radio("Female","G1"),Radio("None","G1",default=True)]
+]
 
 lay=[
     [Text("\t"),Image(ethimg)],
     [Column(col1)],
+    [Column(col2)],
     [Text("\t"*3),Button("Submit",key="submit")]
 ]
 
@@ -33,9 +38,22 @@ while True:             # Event Loop
     if event == WIN_CLOSED:
         break
     elif event=="submit":
-        DocList=q.SearchDoctor(values)
-        print(DocList)
+        if values["_COMBO_"]==[]:
+            popup("Please Select a Specialist")
+        else:
+            DocList=q.SearchDoctor(values)
+            onnokichu = list(itertools.chain(*DocList))
+
+            Printlist="Your Doctor List is \n"
+            length=len(DocList)
+            for i in range (0,length):
+                Printlist=Printlist+onnokichu[i]+"\n"
+            popup(Printlist,font=("monotype Corsiva",20))
+        
     
+    
+    
+
     # autofill the SPecialist
     in_val = values['_INPUT_']
     prediction_list = predict_text(str(in_val), outsp)

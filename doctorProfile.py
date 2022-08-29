@@ -14,13 +14,6 @@ ethimg="static/images/eth444.png"
 mygif="static/images/my1.gif"
 submitimg="static/images/submit.png"
 
-    # Updating from query
-
-
-
-
-
-
 def mainCode():
     ActiveId=d.Active[0]
     
@@ -189,9 +182,9 @@ def mainCode():
                 
                 Popup("Successfully Created Your Profile",font=("Monotype Corsiva",20),title="Unauthorized")                
                 q.UpdateDocPersonalInfo(values,ActiveId)
-                q.DeleteSpecialistList(ActiveId)
+                #q.DeleteSpecialistList(ActiveId)
                 q.DocSpecialist(values,ActiveId)
-                #q.DocMedicalHis(values,ActiveId)
+                q.DocMedicalHis(values,ActiveId)
             else:
                 for i in range(1000):
                     popup_animated(mygif,no_titlebar=True,background_color="black",location=(600,100),time_between_frames=25)
